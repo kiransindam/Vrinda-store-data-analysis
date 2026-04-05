@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vrinda Store — Annual Report 2022 · Full Documentation Package</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1208;
+    --paper: #faf7f2;
+    --cream: #f0ebe0;
+    --gold: #c8922a;
+    --gold-light: #e8b84b;
+    --rust: #b85c38;
+    --teal: #2a7c7c;
+    --sage: #4a7c59;
+    --lavender: #6b5b8a;
+    --border: #d4c9b5;
+    --muted: #7a6e5f;
+    --shadow: rgba(26,18,8,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--ink);
+    padding: 0 2.5rem;
+    display: flex; align-items: center; gap: 0;
+    height: 54px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold-light);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-right: auto;
+  }
+  .nav-links { display: flex; gap: 0; }
+  .nav-links a {
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0 1rem;
+    height: 54px;
+    display: flex; align-items: center;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); border-bottom-color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    color: white;
+    padding: 5rem 2.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(200,146,42,0.18) 0%, transparent 65%),
+                radial-gradient(ellipse at 10% 80%, rgba(42,124,124,0.12) 0%, transparent 50%);
+  }
+  .hero-inner { max-width: 900px; margin: 0 auto; position: relative; }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    border: 1px solid rgba(200,146,42,0.4);
+    padding: 0.3rem 0.9rem;
+    border-radius: 2px;
+    margin-bottom: 1.4rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+  }
+  .hero h1 span { color: var(--gold-light); }
+  .hero-sub {
+    color: rgba(255,255,255,0.65);
+    font-size: 1.05rem;
+    max-width: 620px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-meta {
+    display: flex; gap: 2.5rem; flex-wrap: wrap;
+  }
+  .hero-meta-item { }
+  .hero-meta-item .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.2rem;
+  }
+  .hero-meta-item .value {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+  .section + .section { border-top: 1px solid var(--border); }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .section-intro {
+    color: var(--muted);
+    max-width: 680px;
+    margin-bottom: 2.5rem;
+    font-size: 0.97rem;
+  }
+
+  /* ── EXECUTIVE SUMMARY CARDS ── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .kpi-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.4rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .kpi-card.gold::before { background: var(--gold); }
+  .kpi-card.teal::before { background: var(--teal); }
+  .kpi-card.rust::before { background: var(--rust); }
+  .kpi-card.sage::before { background: var(--sage); }
+  .kpi-card.lavender::before { background: var(--lavender); }
+  .kpi-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .kpi-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .kpi-note { font-size: 0.78rem; color: var(--muted); }
+
+  /* ── CHART DOCS ── */
+  .chart-doc {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 3px 14px var(--shadow);
+  }
+  .chart-doc-header {
+    padding: 1.2rem 1.8rem;
+    display: flex; align-items: center; gap: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .chart-number {
+    width: 36px; height: 36px;
+    background: var(--ink);
+    color: var(--gold-light);
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .chart-title-block { flex: 1; }
+  .chart-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  .chart-subtitle { font-size: 0.8rem; color: var(--muted); margin-top: 0.1rem; }
+  .chart-tag {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    border-radius: 3px;
+    background: var(--cream);
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+
+  .chart-doc-body { padding: 1.6rem 1.8rem; }
+
+  .chart-visual {
+    margin-bottom: 1.5rem;
+    background: var(--paper);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+  }
+
+  /* BAR CHART */
+  .bar-chart { display: flex; flex-direction: column; gap: 0.5rem; }
+  .bar-row { display: flex; align-items: center; gap: 0.8rem; }
+  .bar-label { min-width: 42px; font-size: 0.75rem; color: var(--muted); font-family: 'DM Mono', monospace; text-align: right; }
+  .bar-track { flex: 1; height: 22px; background: var(--cream); border-radius: 3px; overflow: hidden; position: relative; }
+  .bar-fill { height: 100%; border-radius: 3px; position: relative; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; transition: width 0.6s ease; }
+  .bar-fill span { font-size: 0.72rem; font-weight: 600; color: white; font-family: 'DM Mono', monospace; white-space: nowrap; }
+
+  /* PIE-like donut chart using CSS */
+  .donut-wrap { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+  .donut-legend { display: flex; flex-direction: column; gap: 0.7rem; }
+  .legend-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.83rem; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .legend-pct { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 0.8rem; color: var(--muted); margin-left: auto; padding-left: 1rem; }
+
+  /* Grouped bar for age */
+  .grouped-bar { display: grid; grid-template-columns: 1fr; gap: 0.6rem; }
+  .gbar-group { display: flex; flex-direction: column; gap: 0.25rem; }
+  .gbar-label { font-size: 0.75rem; font-weight: 600; color: var(--ink); margin-bottom: 0.15rem; }
+  .gbar-bars { display: flex; gap: 0.4rem; }
+  .gbar-bar { display: flex; align-items: center; height: 18px; border-radius: 3px; }
+  .gbar-bar span { font-size: 0.68rem; font-weight: 600; color: white; padding: 0 6px; font-family: 'DM Mono', monospace; }
+
+  /* insight box */
+  .insight-box {
+    background: linear-gradient(135deg, var(--cream), #ede4d3);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 6px 6px 0;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.2rem;
+    font-size: 0.9rem;
+  }
+  .insight-box strong { color: var(--gold); }
+
+  .doc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  @media (max-width: 600px) { .doc-grid { grid-template-columns: 1fr; } }
+
+  .doc-card {
+    background: var(--cream);
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+  }
+  .doc-card-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+  .doc-card p { font-size: 0.88rem; color: var(--ink); }
+
+  ul.bullet { padding-left: 1.2rem; }
+  ul.bullet li { margin-bottom: 0.4rem; font-size: 0.88rem; }
+  ul.bullet li::marker { color: var(--gold); }
+
+  /* ── PRESENTATION GUIDE ── */
+  .timeline { position: relative; padding-left: 2.5rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 10px; top: 0; bottom: 0;
+    width: 2px; background: var(--border);
+  }
+  .tl-item { position: relative; margin-bottom: 2rem; }
+  .tl-dot {
+    position: absolute; left: -2.5rem;
+    width: 22px; height: 22px;
+    background: var(--ink);
+    border: 3px solid var(--gold);
+    border-radius: 50%;
+    top: 2px;
+  }
+  .tl-phase {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.2rem;
+  }
+  .tl-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .tl-body { font-size: 0.88rem; color: var(--muted); }
+  .tl-body p { margin-bottom: 0.4rem; }
+
+  /* ── STAKEHOLDER COMMS ── */
+  .comm-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .comm-header {
+    display: flex; align-items: center; gap: 0.8rem;
+    padding: 1rem 1.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .comm-avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .comm-name { font-weight: 600; font-size: 0.92rem; }
+  .comm-role { font-size: 0.77rem; color: var(--muted); }
+  .comm-body { padding: 1.2rem 1.4rem; }
+  .comm-body p { font-size: 0.88rem; margin-bottom: 0.5rem; color: var(--ink); }
+
+  /* ── TABLE ── */
+  table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+  th {
+    background: var(--ink); color: var(--gold-light);
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.7rem 1rem; text-align: left;
+  }
+  td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); }
+  tr:nth-child(even) td { background: var(--cream); }
+  tr:last-child td { border-bottom: none; }
+
+  /* ── EMAIL TEMPLATE ── */
+  .email-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px var(--shadow);
+    margin-bottom: 1.5rem;
+  }
+  .email-header {
+    background: var(--ink);
+    color: white;
+    padding: 0.8rem 1.4rem;
+    font-size: 0.78rem;
+    font-family: 'DM Mono', monospace;
+    display: flex; gap: 1.5rem; flex-wrap: wrap;
+  }
+  .email-header span { color: rgba(255,255,255,0.5); }
+  .email-body { padding: 1.4rem; font-size: 0.88rem; line-height: 1.7; color: var(--ink); }
+  .email-body p { margin-bottom: 0.8rem; }
+
+  /* ── Q&A ── */
+  details {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 0.6rem;
+    overflow: hidden;
+  }
+  summary {
+    padding: 0.9rem 1.2rem;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: flex; align-items: center; gap: 0.6rem;
+    list-style: none;
+  }
+  summary::before {
+    content: '+';
+    width: 20px; height: 20px;
+    background: var(--cream);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--gold);
+    flex-shrink: 0;
+    text-align: center;
+    line-height: 20px;
+  }
+  details[open] summary::before { content: '−'; }
+  details[open] summary { border-bottom: 1px solid var(--border); }
+  .qa-answer { padding: 0.9rem 1.2rem; font-size: 0.88rem; color: var(--muted); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.5);
+    padding: 2rem 2.5rem;
+    text-align: center;
+    font-size: 0.8rem;
+  }
+  footer strong { color: var(--gold-light); }
+
+  @media print {
+    nav { display: none; }
+    .chart-doc { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Vrinda Store · 2022</div>
+  <div class="nav-links">
+    <a href="#executive">Summary</a>
+    <a href="#charts">Charts</a>
+    <a href="#presentation">Presentation</a>
+    <a href="#stakeholders">Stakeholders</a>
+    <a href="#emails">Emails</a>
+    <a href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Full Documentation Package</div>
+    <h1>Vrinda Store<br><span>Annual Report 2022</span></h1>
+    <p class="hero-sub">A complete data analysis package covering sales performance, customer demographics, channel effectiveness, and actionable business insights — with a full stakeholder communication guide.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="label">Prepared For</div>
+        <div class="value">Manager & Client</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Period</div>
+        <div class="value">January – December 2022</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Total Revenue</div>
+        <div class="value">₹2.12 Crore</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Total Orders</div>
+        <div class="value">31,047</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════ EXECUTIVE SUMMARY ═══════════════════════════════ -->
+<section id="executive" class="section">
+  <div class="section-label">01 · Executive Summary</div>
+  <h2 class="section-title">Key Performance Indicators</h2>
+  <p class="section-intro">A high-level snapshot of Vrinda Store's performance across the full year 2022, drawn from pivot analysis of 31,000+ orders across 7 major e-commerce channels.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card gold">
+      <div class="kpi-label">Total Revenue</div>
+      <div class="kpi-value">₹2.12 Cr</div>
+      <div class="kpi-note">Sum of all order amounts across 12 months</div>
+    </div>
+    <div class="kpi-card teal">
+      <div class="kpi-label">Total Orders</div>
+      <div class="kpi-value">31,047</div>
+      <div class="kpi-note">Orders placed across all channels</div>
+    </div>
+    <div class="kpi-card sage">
+      <div class="kpi-label">Delivery Success Rate</div>
+      <div class="kpi-value">92.2%</div>
+      <div class="kpi-note">28,641 of 31,047 orders delivered</div>
+    </div>
+    <div class="kpi-card rust">
+      <div class="kpi-label">Women Customer Share</div>
+      <div class="kpi-value">64%</div>
+      <div class="kpi-note">₹1.36 Cr vs ₹0.76 Cr (Men)</div>
+    </div>
+    <div class="kpi-card lavender">
+      <div class="kpi-label">Top Channel</div>
+      <div class="kpi-value">Amazon</div>
+      <div class="kpi-note">₹75.2 L revenue · 11,016 orders</div>
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <strong>Bottom-Line Summary:</strong> Vrinda Store generated ₹2.12 Crore in 2022 with a strong 92% delivery rate. Women shoppers account for nearly two-thirds of all sales. March was the peak month (₹19.3L) and Amazon is overwhelmingly the dominant sales channel. Adult women aged 30–49 are the most valuable customer segment.
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ CHARTS ═══════════════════════════════ -->
+<section id="charts" class="section">
+  <div class="section-label">02 · Chart-by-Chart Analysis</div>
+  <h2 class="section-title">Explaining Each Chart & Its Business Value</h2>
+  <p class="section-intro">Every chart in your Excel dashboard is documented below with a visual recreation, a plain-English explanation, and clear guidance on what business decisions each chart enables.</p>
+
+
+  <!-- CHART 1: Sales by Month -->
+  <div class="chart-doc">
+    <div class="chart-doc-header">
+      <div class="chart-number">1</div>
+      <div class="chart-title-block">
+        <div class="chart-title">Monthly Sales & Order Volume</div>
+        <div class="chart-subtitle">Revenue (Sum of Amount) + Order Count per Month — Jan to Dec 2022</div>
+      </div>
+      <span class="chart-tag">Combo Chart</span>
+    </div>
+    <div class="chart-doc-body">
+
+      <div class="chart-visual">
+        <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">Revenue (₹ Lakhs) per Month</div>
+        <div class="bar-chart">
+          <!-- Jan to Dec bars scaled to max 1928066 = Mar -->
+          <div class="bar-row"><span class="bar-label">Jan</span><div class="bar-track"><div class="bar-fill" style="width:94.4%;background:linear-gradient(90deg,var(--teal),#3ea8a8)"><span>18.2L</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">Feb</span><div class="bar-track"><div class="bar-fill" style="width:97.3%;background:linear-gradient(90deg,var(--teal),#3ea8a8)"><span>18.8L</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">Mar</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light))"><span>19.3L ★</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">Apr</span><div class="bar-track"><div class="bar-fill" style="width:94.9%;background:linear-gradient(90deg,var(--teal),#3ea8a8)"><span>18.3L</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">May</span><div class="bar-track"><div class="bar-fill" style="width:93.2%;background:linear-gradient(90deg,var(--teal),#3ea8a8)"><span>18.0L</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">Jun</span><div class="bar-track"><div class="bar-fill" style="width:90.8%;background:linear-gradient(90deg,var(--teal),#3ea8a8)"><span>17.5L</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">Jul</span><div class="bar-track"><div class="bar-fill" style="width:91.9%;background:linear-gradient(90deg,var(--teal),#3ea8a8)"><span>17.7L</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">Aug</span><div class="bar-track"><div class="bar-fill" style="width:93.8%;background:linear-gradient(90deg,var(--teal),#3ea8a8)"><span>18.1L</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">Sep</span><div class="bar-track"><div class="bar-fill" style="width:87.6%;background:linear-gradient(90deg,var(--rust),#d47060)"><span>16.9L</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">Oct</span><div class="bar-track"><div class="bar-fill" style="width:86.5%;background:linear-gradient(90deg,var(--rust),#d47060)"><span>16.7L</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">Nov</span><div class="bar-track"><div class="bar-fill" style="width:83.8%;background:linear-gradient(90deg,var(--rust),#d47060)"><span>16.2L</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">Dec</span><div class="bar-track"><div class="bar-fill" style="width:84.1%;background:linear-gradient(90deg,var(--rust),#d47060)"><span>16.2L</span></div></div></div>
+        </div>
+        <div style="margin-top:0.8rem;font-size:0.73rem;color:var(--muted);">★ Peak month &nbsp;|&nbsp; <span style="color:var(--rust)">■</span> Below-average (Sep–Dec) &nbsp;|&nbsp; <span style="color:var(--teal)">■</span> Average-above (Jan–Aug)</div>
+      </div>
+
+      <div class="doc-grid">
+        <div class="doc-card">
+          <div class="doc-card-title">What the Chart Shows</div>
+          <p>Sales revenue and number of orders placed each month throughout 2022. The chart is a combination of a bar chart (revenue) and a line chart (orders), letting you see both volume and value together at a glance.</p>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-title">Key Findings</div>
+          <ul class="bullet">
+            <li>March peaks at ₹19.3L — likely driven by spring/summer inventory refresh</li>
+            <li>Clear declining trend from September onward (Sep–Dec = 4 weakest months)</li>
+            <li>Q1 (Jan–Mar) is the strongest quarter overall</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="doc-card" style="margin-bottom:1rem;">
+        <div class="doc-card-title">Business Value & Recommended Action</div>
+        <p>This chart tells you <em>when</em> to invest and when to conserve. Plan promotional campaigns, new product launches, and maximum inventory stocking for January–March. Use the Sep–Dec slowdown to run clearance sales, loyalty programs, and content marketing to maintain engagement. Consider whether festive season promotions (Diwali, Navratri — Oct/Nov) could reverse the Q4 decline in future years.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- CHART 2: Men vs Women -->
+  <div class="chart-doc">
+    <div class="chart-doc-header">
+      <div class="chart-number">2</div>
+      <div class="chart-title-block">
+        <div class="chart-title">Sales by Gender</div>
+        <div class="chart-subtitle">Total Revenue split between Men and Women customers</div>
+      </div>
+      <span class="chart-tag">Pie / Donut</span>
+    </div>
+    <div class="chart-doc-body">
+
+      <div class="chart-visual">
+        <div class="donut-wrap">
+          <svg viewBox="0 0 120 120" width="130" height="130">
+            <!-- Women: 64% = 230.4° -->
+            <circle cx="60" cy="60" r="48" fill="none" stroke="#e8e0d5" stroke-width="22"/>
+            <circle cx="60" cy="60" r="48" fill="none" stroke="var(--teal)" stroke-width="22"
+              stroke-dasharray="192.6 108.8" stroke-dashoffset="0"
+              transform="rotate(-90 60 60)"/>
+            <circle cx="60" cy="60" r="48" fill="none" stroke="var(--rust)" stroke-width="22"
+              stroke-dasharray="108.8 192.6" stroke-dashoffset="-192.6"
+              transform="rotate(-90 60 60)"/>
+            <text x="60" y="56" text-anchor="middle" font-size="11" font-weight="700" font-family="Playfair Display,serif" fill="#1a1208">64%</text>
+            <text x="60" y="69" text-anchor="middle" font-size="7" fill="#7a6e5f">Women</text>
+          </svg>
+          <div class="donut-legend">
+            <div class="legend-item">
+              <div class="legend-dot" style="background:var(--teal)"></div>
+              <div>
+                <div style="font-weight:600;font-size:0.88rem;">Women</div>
+                <div style="font-size:0.77rem;color:var(--muted);">₹1,35,62,773</div>
+              </div>
+              <div class="legend-pct">64%</div>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:var(--rust)"></div>
+              <div>
+                <div style="font-weight:600;font-size:0.88rem;">Men</div>
+                <div style="font-size:0.77rem;color:var(--muted);">₹76,13,604</div>
+              </div>
+              <div class="legend-pct">36%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-grid">
+        <div class="doc-card">
+          <div class="doc-card-title">What the Chart Shows</div>
+          <p>How total 2022 revenue is split between female and male buyers. A simple two-segment pie clearly communicates the dominant customer base.</p>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-title">Key Finding</div>
+          <p>Women account for nearly two-thirds (64%) of all revenue — nearly double the men's share. This is a defining characteristic of the Vrinda Store customer profile.</p>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-title">Business Value & Recommended Action</div>
+        <p>Marketing budgets, product assortment, social media content, and influencer partnerships should be heavily skewed toward female audiences. The men's 36% share still represents ₹76 Lakhs — enough to warrant a dedicated menswear strategy. Focus women's campaigns on ethnic wear (Kurta + Sets = dominant categories) and women's fashion platforms. Consider running targeted campaigns on Women's Day, Navratri, and Karva Chauth.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- CHART 3: Order Status -->
+  <div class="chart-doc">
+    <div class="chart-doc-header">
+      <div class="chart-number">3</div>
+      <div class="chart-title-block">
+        <div class="chart-title">Order Status Breakdown</div>
+        <div class="chart-subtitle">Delivered vs Cancelled vs Returned vs Refunded</div>
+      </div>
+      <span class="chart-tag">Pie Chart</span>
+    </div>
+    <div class="chart-doc-body">
+
+      <div class="chart-visual">
+        <div class="bar-chart">
+          <div class="bar-row">
+            <span class="bar-label" style="min-width:75px;font-size:0.78rem;">Delivered</span>
+            <div class="bar-track"><div class="bar-fill" style="width:92.2%;background:linear-gradient(90deg,var(--sage),#5a9c6a)"><span>28,641 (92.3%)</span></div></div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label" style="min-width:75px;font-size:0.78rem;">Returned</span>
+            <div class="bar-track"><div class="bar-fill" style="width:3.4%;background:var(--rust)"><span></span></div></div>
+            <span style="font-size:0.75rem;color:var(--muted);margin-left:0.5rem;">1,045 (3.4%)</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label" style="min-width:75px;font-size:0.78rem;">Cancelled</span>
+            <div class="bar-track"><div class="bar-fill" style="width:2.7%;background:var(--gold)"><span></span></div></div>
+            <span style="font-size:0.75rem;color:var(--muted);margin-left:0.5rem;">844 (2.7%)</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label" style="min-width:75px;font-size:0.78rem;">Refunded</span>
+            <div class="bar-track"><div class="bar-fill" style="width:1.7%;background:var(--lavender)"><span></span></div></div>
+            <span style="font-size:0.75rem;color:var(--muted);margin-left:0.5rem;">517 (1.7%)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-grid">
+        <div class="doc-card">
+          <div class="doc-card-title">What the Chart Shows</div>
+          <p>The final outcome for every order placed in 2022. This is a direct measure of operational health — how many orders actually reached the customer without issue.</p>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-title">Key Finding</div>
+          <p>92.3% of all orders were delivered successfully. Combined problem rate (cancelled + returned + refunded) is 7.8% = ~2,406 orders. Returns (3.4%) are the biggest problem after delivery.</p>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-title">Business Value & Recommended Action</div>
+        <p>A 92% delivery rate is solid, but investigating the reasons behind returns (3.4%) and cancellations (2.7%) could unlock significant revenue. If even half of those 2,406 orders could be saved, it represents approximately ₹12–14 Lakhs in additional annual revenue. Recommended actions: improve sizing guides to reduce returns, implement order confirmation nudges to reduce cancellations, and set up a streamlined refund experience to reduce churn.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- CHART 4: Top 5 Cities -->
+  <div class="chart-doc">
+    <div class="chart-doc-header">
+      <div class="chart-number">4</div>
+      <div class="chart-title-block">
+        <div class="chart-title">Top 5 Cities by Revenue</div>
+        <div class="chart-subtitle">Geographic concentration of sales value</div>
+      </div>
+      <span class="chart-tag">Bar Chart</span>
+    </div>
+    <div class="chart-doc-body">
+
+      <div class="chart-visual">
+        <div class="bar-chart">
+          <div class="bar-row"><span class="bar-label" style="min-width:90px;font-size:0.78rem;">Bengaluru</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light))"><span>₹17.7L ★</span></div></div></div>
+          <div class="bar-row"><span class="bar-label" style="min-width:90px;font-size:0.78rem;">Hyderabad</span><div class="bar-track"><div class="bar-fill" style="width:77.6%;background:linear-gradient(90deg,var(--teal),#3ea8a8)"><span>₹13.7L</span></div></div></div>
+          <div class="bar-row"><span class="bar-label" style="min-width:90px;font-size:0.78rem;">New Delhi</span><div class="bar-track"><div class="bar-fill" style="width:65.8%;background:linear-gradient(90deg,var(--teal),#3ea8a8)"><span>₹11.6L</span></div></div></div>
+          <div class="bar-row"><span class="bar-label" style="min-width:90px;font-size:0.78rem;">Chennai</span><div class="bar-track"><div class="bar-fill" style="width:52.2%;background:linear-gradient(90deg,var(--sage),#5a9c6a)"><span>₹9.2L</span></div></div></div>
+          <div class="bar-row"><span class="bar-label" style="min-width:90px;font-size:0.78rem;">Mumbai</span><div class="bar-track"><div class="bar-fill" style="width:51.9%;background:linear-gradient(90deg,var(--sage),#5a9c6a)"><span>₹9.2L</span></div></div></div>
+        </div>
+      </div>
+
+      <div class="doc-grid">
+        <div class="doc-card">
+          <div class="doc-card-title">What the Chart Shows</div>
+          <p>The five cities generating the highest revenue for Vrinda Store. These represent the strongest geographic markets and where customers are most concentrated.</p>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-title">Key Finding</div>
+          <p>Bengaluru leads by a significant margin at ₹17.7L. South India (Bengaluru, Hyderabad, Chennai) accounts for a disproportionately large share, suggesting strong ethnic wear demand in South Indian metros.</p>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-title">Business Value & Recommended Action</div>
+        <p>Concentrate targeted advertising spend (Google Ads, Instagram, Facebook) geo-targeted at these 5 cities first. For Bengaluru and Hyderabad, consider regional language creatives (Kannada, Telugu). Explore whether hyperlocal delivery partnerships or same-day shipping options in these cities could further boost conversion. Also consider expanding the "Top 5" analysis to identify the next 5–10 emerging cities where slight investment could move the needle.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- CHART 5: Age Group by Gender -->
+  <div class="chart-doc">
+    <div class="chart-doc-header">
+      <div class="chart-number">5</div>
+      <div class="chart-title-block">
+        <div class="chart-title">Order Count by Age Group & Gender</div>
+        <div class="chart-subtitle">Adult / Senior / Teenager split between Men and Women</div>
+      </div>
+      <span class="chart-tag">Grouped Bar</span>
+    </div>
+    <div class="chart-doc-body">
+
+      <div class="chart-visual">
+        <div class="grouped-bar">
+          <div class="gbar-group">
+            <div class="gbar-label">Adult (30–49 yrs)</div>
+            <div class="gbar-bars">
+              <div class="gbar-bar" style="width:45%;background:var(--rust);"><span>Men: 4,803</span></div>
+              <div class="gbar-bar" style="width:55%;background:var(--teal);"><span>Women: 10,740</span></div>
+            </div>
+            <div style="font-size:0.73rem;color:var(--muted);margin-top:0.2rem;">Total: 15,543 orders — LARGEST segment</div>
+          </div>
+          <div style="height:0.8rem;"></div>
+          <div class="gbar-group">
+            <div class="gbar-label">Teenager (&lt;30 yrs)</div>
+            <div class="gbar-bars">
+              <div class="gbar-bar" style="width:30%;background:var(--rust);"><span>Men: 2,855</span></div>
+              <div class="gbar-bar" style="width:70%;background:var(--teal);"><span>Women: 6,560</span></div>
+            </div>
+            <div style="font-size:0.73rem;color:var(--muted);margin-top:0.2rem;">Total: 9,415 orders</div>
+          </div>
+          <div style="height:0.8rem;"></div>
+          <div class="gbar-group">
+            <div class="gbar-label">Senior (50+ yrs)</div>
+            <div class="gbar-bars">
+              <div class="gbar-bar" style="width:30%;background:var(--rust);"><span>Men: 1,836</span></div>
+              <div class="gbar-bar" style="width:70%;background:var(--teal);"><span>Women: 4,253</span></div>
+            </div>
+            <div style="font-size:0.73rem;color:var(--muted);margin-top:0.2rem;">Total: 6,089 orders</div>
+          </div>
+        </div>
+        <div style="margin-top:1rem;display:flex;gap:1.5rem;">
+          <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;"><div style="width:12px;height:12px;background:var(--teal);border-radius:2px;"></div>Women</div>
+          <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;"><div style="width:12px;height:12px;background:var(--rust);border-radius:2px;"></div>Men</div>
+        </div>
+      </div>
+
+      <div class="doc-grid">
+        <div class="doc-card">
+          <div class="doc-card-title">What the Chart Shows</div>
+          <p>Order counts split across three age groups (Teenager, Adult, Senior) and further divided by gender. This is the most powerful customer segmentation insight in the entire report.</p>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-title">Key Finding</div>
+          <p>Adult Women (30–49) are the #1 customer segment with 10,740 orders — more than double any other segment. Adult Men come second at 4,803. Teenager Women at 6,560 are a strong secondary audience.</p>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-title">Business Value & Recommended Action</div>
+        <p>This chart is the foundation of your entire marketing persona strategy. <strong>Primary target: Women aged 30–49</strong> — design products, messaging, and styling for this group. For Teenager women (under 30), lean into trend-driven, social-media-native content on Instagram and Reels. Senior Women (50+) represent an underserved but present market — simpler sizing guides and accessible designs could grow this segment. Consider loyalty programs specifically for Adult Women given their volume.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- CHART 6: Sales by Channel -->
+  <div class="chart-doc">
+    <div class="chart-doc-header">
+      <div class="chart-number">6</div>
+      <div class="chart-title-block">
+        <div class="chart-title">Revenue & Orders by Sales Channel</div>
+        <div class="chart-subtitle">Ajio / Amazon / Flipkart / Meesho / Myntra / Nalli / Others</div>
+      </div>
+      <span class="chart-tag">Combo / Column</span>
+    </div>
+    <div class="chart-doc-body">
+
+      <div class="chart-visual">
+        <div class="bar-chart">
+          <div class="bar-row"><span class="bar-label" style="min-width:70px;font-size:0.78rem;">Amazon</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light))"><span>₹75.2L · 11,016 orders ★</span></div></div></div>
+          <div class="bar-row"><span class="bar-label" style="min-width:70px;font-size:0.78rem;">Myntra</span><div class="bar-track"><div class="bar-fill" style="width:65.7%;background:linear-gradient(90deg,var(--teal),#3ea8a8)"><span>₹49.4L · 7,254</span></div></div></div>
+          <div class="bar-row"><span class="bar-label" style="min-width:70px;font-size:0.78rem;">Flipkart</span><div class="bar-track"><div class="bar-fill" style="width:60.8%;background:linear-gradient(90deg,var(--teal),#3ea8a8)"><span>₹45.7L · 6,703</span></div></div></div>
+          <div class="bar-row"><span class="bar-label" style="min-width:70px;font-size:0.78rem;">Ajio</span><div class="bar-track"><div class="bar-fill" style="width:17.7%;background:linear-gradient(90deg,var(--sage),#5a9c6a)"><span>₹13.3L · 1,931</span></div></div></div>
+          <div class="bar-row"><span class="bar-label" style="min-width:70px;font-size:0.78rem;">Nalli</span><div class="bar-track"><div class="bar-fill" style="width:13.5%;background:linear-gradient(90deg,var(--lavender),#8a75a8)"><span>₹10.2L · 1,484</span></div></div></div>
+          <div class="bar-row"><span class="bar-label" style="min-width:70px;font-size:0.78rem;">Meesho</span><div class="bar-track"><div class="bar-fill" style="width:12.3%;background:linear-gradient(90deg,var(--lavender),#8a75a8)"><span>₹9.3L · 1,398</span></div></div></div>
+          <div class="bar-row"><span class="bar-label" style="min-width:70px;font-size:0.78rem;">Others</span><div class="bar-track"><div class="bar-fill" style="width:11.5%;background:#aaa"><span>₹8.7L · 1,261</span></div></div></div>
+        </div>
+      </div>
+
+      <div class="doc-grid">
+        <div class="doc-card">
+          <div class="doc-card-title">What the Chart Shows</div>
+          <p>Which e-commerce platforms are generating the most revenue and orders for Vrinda Store. This chart directly answers: "Where should we invest our seller resources?"</p>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-title">Key Finding</div>
+          <p>Amazon alone drives 35% of total revenue (₹75.2L). The Big 3 (Amazon + Myntra + Flipkart) account for ~81% of revenue. Ajio has high average order value relative to its order count.</p>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-title">Business Value & Recommended Action</div>
+        <p>Double down on Amazon — invest in Sponsored Products ads, optimize listings with A+ content, and maintain Prime eligibility. Myntra and Flipkart are strong #2 and #3 — ensure catalogue is fully updated there. Note that Ajio has a relatively high revenue-per-order (₹69/order vs Amazon's ₹68) and a premium buyer profile — consider featuring higher-price-point items on Ajio. Meesho and Nalli are small but may represent untapped value-segment and saree-specific audiences respectively.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- CHART 7: Category Revenue -->
+  <div class="chart-doc">
+    <div class="chart-doc-header">
+      <div class="chart-number">7</div>
+      <div class="chart-title-block">
+        <div class="chart-title">Revenue by Product Category</div>
+        <div class="chart-subtitle">Kurta / Set / Western Dress / Saree / Top / Ethnic Dress / Blouse / Bottom</div>
+      </div>
+      <span class="chart-tag">Bar / Pie Chart</span>
+    </div>
+    <div class="chart-doc-body">
+
+      <div class="chart-visual">
+        <div class="bar-chart">
+          <div class="bar-row"><span class="bar-label" style="min-width:110px;font-size:0.78rem;">Set</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light))"><span>₹1.05 Cr ★</span></div></div></div>
+          <div class="bar-row"><span class="bar-label" style="min-width:110px;font-size:0.78rem;">Kurta</span><div class="bar-track"><div class="bar-fill" style="width:47.2%;background:linear-gradient(90deg,var(--teal),#3ea8a8)"><span>₹49.6L</span></div></div></div>
+          <div class="bar-row"><span class="bar-label" style="min-width:110px;font-size:0.78rem;">Western Dress</span><div class="bar-track"><div class="bar-fill" style="width:30.0%;background:linear-gradient(90deg,var(--teal),#3ea8a8)"><span>₹31.5L</span></div></div></div>
+          <div class="bar-row"><span class="bar-label" style="min-width:110px;font-size:0.78rem;">Saree</span><div class="bar-track"><div class="bar-fill" style="width:9.6%;background:linear-gradient(90deg,var(--sage),#5a9c6a)"><span>₹10.1L</span></div></div></div>
+          <div class="bar-row"><span class="bar-label" style="min-width:110px;font-size:0.78rem;">Top</span><div class="bar-track"><div class="bar-fill" style="width:11.3%;background:linear-gradient(90deg,var(--sage),#5a9c6a)"><span>₹11.9L</span></div></div></div>
+          <div class="bar-row"><span class="bar-label" style="min-width:110px;font-size:0.78rem;">Ethnic Dress</span><div class="bar-track"><div class="bar-fill" style="width:1.9%;background:var(--lavender)"><span></span></div></div><span style="margin-left:.5rem;font-size:.75rem;color:var(--muted)">₹2.0L</span></div>
+          <div class="bar-row"><span class="bar-label" style="min-width:110px;font-size:0.78rem;">Blouse</span><div class="bar-track"><div class="bar-fill" style="width:1.3%;background:#aaa"><span></span></div></div><span style="margin-left:.5rem;font-size:.75rem;color:var(--muted)">₹1.4L</span></div>
+          <div class="bar-row"><span class="bar-label" style="min-width:110px;font-size:0.78rem;">Bottom</span><div class="bar-track"><div class="bar-fill" style="width:0.3%;background:#ccc"><span></span></div></div><span style="margin-left:.5rem;font-size:.75rem;color:var(--muted)">₹0.3L</span></div>
+        </div>
+      </div>
+
+      <div class="doc-grid">
+        <div class="doc-card">
+          <div class="doc-card-title">What the Chart Shows</div>
+          <p>How revenue distributes across all product categories sold by Vrinda Store. This is the core product portfolio analysis — which items are driving the business.</p>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-title">Key Finding</div>
+          <p>Sets are the runaway winner at ₹1.05 Crore — nearly 50% of total revenue. Kurtas (₹49.6L) and Western Dresses (₹31.5L) are distant but meaningful #2 and #3. Ethnic clothing dominates overall.</p>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-title">Business Value & Recommended Action</div>
+        <p>Sets are the hero product — expand the Sets collection aggressively with new designs, colorways, and seasonal variants. Ensure Sets always have strong inventory to avoid stockouts during peak months. Kurtas represent a loyal, consistent buy — maintain variety here. Western Dresses at ₹31.5L indicate an audience that wants both traditional and contemporary fashion — create fusion lines. Consider discontinuing or minimally stocking Bottoms (₹0.3L) and investing that capital elsewhere.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════ PRESENTATION GUIDE ═══════════════════════════════ -->
+<section id="presentation" class="section">
+  <div class="section-label">03 · Presentation Guide</div>
+  <h2 class="section-title">How to Present This Project</h2>
+  <p class="section-intro">A step-by-step guide for presenting these findings confidently — structured as a timeline from pre-meeting preparation through post-meeting follow-up.</p>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-phase">Step 1 · 48 Hours Before</div>
+      <div class="tl-heading">Preparation & Dry Run</div>
+      <div class="tl-body">
+        <p>Review the dashboard one full time end-to-end. Write down 3 "so what" statements — one business decision each chart enables. Know these cold.</p>
+        <p>Prepare a printed or PDF version of this documentation as your leave-behind. Set up the Excel dashboard on a second screen or large monitor if presenting in person. If virtual, test screen share and resolution on the dashboard file.</p>
+        <p>Anticipate 3–5 hard questions (see FAQ section below) and prepare your answers.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-phase">Step 2 · Opening (2 min)</div>
+      <div class="tl-heading">Set the Stage with a Strong Hook</div>
+      <div class="tl-body">
+        <p>Open with the one-line summary: <em>"Vrinda Store generated ₹2.12 Crore in 2022 — and this report tells us exactly where it came from, who's buying, and where the next ₹50 Lakhs is hiding."</em></p>
+        <p>State what you'll cover: monthly trends, customer demographics, channel performance, and key recommendations. Give the audience the map before the journey.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-phase">Step 3 · Charts (12–15 min)</div>
+      <div class="tl-heading">Walk Through Charts in This Order</div>
+      <div class="tl-body">
+        <p>Recommended presentation sequence for maximum story impact:</p>
+        <p><strong>1 → Monthly Sales</strong> (establish the year arc) → <strong>2 → Gender Split</strong> (define the customer) → <strong>5 → Age Group</strong> (deepen the customer profile) → <strong>4 → Top Cities</strong> (add geography) → <strong>6 → Channels</strong> (tell them where to invest) → <strong>7 → Categories</strong> (tell them what to sell more of) → <strong>3 → Order Status</strong> (close with operations).</p>
+        <p>For each chart, follow a 3-part pattern: <em>"Here is what the chart shows → here is the key insight → here is what we should do about it."</em> Never present a chart without the "what we should do" part.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-phase">Step 4 · Recommendations (5 min)</div>
+      <div class="tl-heading">Present the Top 5 Actionable Recommendations</div>
+      <div class="tl-body">
+        <p>Synthesise across all charts into prioritised actions. Use the table in the next section. Frame each recommendation with a potential revenue impact estimate where possible.</p>
+        <p>Invite discussion. Say: <em>"These are my top recommendations based on the data. I'm happy to go deeper on any of these or discuss trade-offs."</em></p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-phase">Step 5 · Q&A (5–10 min)</div>
+      <div class="tl-heading">Handle Questions with Confidence</div>
+      <div class="tl-body">
+        <p>Use the FAQ section of this document to prepare. When you don't know an answer, say: <em>"That's a great question. I don't have that data in scope right now, but I can look into it and follow up."</em> Never guess or make up numbers.</p>
+        <p>If a question is out of scope, acknowledge it and offer to include it in a follow-up analysis.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-phase">Step 6 · Within 24 Hours After</div>
+      <div class="tl-heading">Send Follow-Up Email</div>
+      <div class="tl-body">
+        <p>Send the follow-up email (template provided in the Emails section) within 24 hours of the meeting. Attach this documentation PDF and the Excel dashboard.</p>
+        <p>Include action owners, deadlines, and next steps in writing. A strong close turns a good presentation into a project that actually gets implemented.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Recommendations Table -->
+  <div style="margin-top:2.5rem;">
+    <div class="section-label">Top 5 Strategic Recommendations</div>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Recommendation</th>
+          <th>Based On</th>
+          <th>Priority</th>
+          <th>Est. Impact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1</strong></td>
+          <td>Expand Sets collection with new designs & seasonal variants</td>
+          <td>Chart 7: Sets = 50% of revenue</td>
+          <td>🔴 High</td>
+          <td>+₹15–25L</td>
+        </tr>
+        <tr>
+          <td><strong>2</strong></td>
+          <td>Increase Amazon ad spend + A+ content investment</td>
+          <td>Chart 6: Amazon = 35% of revenue</td>
+          <td>🔴 High</td>
+          <td>+₹10–20L</td>
+        </tr>
+        <tr>
+          <td><strong>3</strong></td>
+          <td>Target Adult Women 30–49 as primary marketing persona</td>
+          <td>Chart 5: Largest segment with 10,740 orders</td>
+          <td>🔴 High</td>
+          <td>+₹8–15L</td>
+        </tr>
+        <tr>
+          <td><strong>4</strong></td>
+          <td>Launch Q4 festive campaign to address Sep–Dec dip</td>
+          <td>Chart 1: 4-month sales decline from Sep</td>
+          <td>🟡 Medium</td>
+          <td>+₹5–10L</td>
+        </tr>
+        <tr>
+          <td><strong>5</strong></td>
+          <td>Investigate & reduce returns (3.4%) via improved size guides</td>
+          <td>Chart 3: 1,045 returned orders</td>
+          <td>🟡 Medium</td>
+          <td>+₹4–7L</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ STAKEHOLDER GUIDE ═══════════════════════════════ -->
+<section id="stakeholders" class="section">
+  <div class="section-label">04 · Stakeholder Communication</div>
+  <h2 class="section-title">Tailoring Your Message to Your Audience</h2>
+  <p class="section-intro">Your manager and your client have different goals, different knowledge levels, and different questions. Here's exactly how to communicate with each.</p>
+
+  <div class="comm-card">
+    <div class="comm-header">
+      <div class="comm-avatar" style="background:#e8f4f0;">👔</div>
+      <div>
+        <div class="comm-name">Your Manager</div>
+        <div class="comm-role">Internal stakeholder · Focused on process, quality, and team performance</div>
+      </div>
+    </div>
+    <div class="comm-body">
+      <p><strong>What they care about:</strong> Was the analysis done correctly? Are the insights defensible? Does it reflect well on the team? What's the next step?</p>
+      <p><strong>What to emphasise:</strong> Methodology, data quality (31K+ rows cleaned and analysed), the rigour behind the pivot tables, and the clear logic from data → insight → recommendation.</p>
+      <p><strong>Tone:</strong> Collaborative and professional. Use phrases like "based on the data," "the analysis shows," and "I'd recommend we present X to the client." Show ownership of the work.</p>
+      <p><strong>Format:</strong> A brief 10-minute walkthrough or written summary (this document). Don't oversell; let the work speak. Flag any limitations or caveats honestly — managers appreciate intellectual honesty.</p>
+      <p><strong>Key message:</strong> <em>"I've completed the annual analysis for Vrinda Store. The key findings are X, Y, Z, and I've identified 5 actionable recommendations we can present to the client."</em></p>
+    </div>
+  </div>
+
+  <div class="comm-card">
+    <div class="comm-header">
+      <div class="comm-avatar" style="background:#fef3e2;">🏪</div>
+      <div>
+        <div class="comm-name">The Client (Vrinda Store)</div>
+        <div class="comm-role">External stakeholder · Focused on revenue, growth, and competitive position</div>
+      </div>
+    </div>
+    <div class="comm-body">
+      <p><strong>What they care about:</strong> How do I grow revenue? Who are my best customers? Where should I focus next year? Am I getting good value from this work?</p>
+      <p><strong>What to emphasise:</strong> Business outcomes, not analysis process. Lead with revenue numbers, customer insights, and concrete recommendations. They don't need to know how you built the pivot tables — they need to know what to <em>do</em>.</p>
+      <p><strong>Tone:</strong> Confident, business-oriented, and optimistic. Translate data into plain business language — never use "pivot table" or "data cleaning" with the client. Say "our analysis of 31,000 orders" instead.</p>
+      <p><strong>Format:</strong> Dashboard walk-through (15–20 min) + recommendations table + leave-behind document. Use the Excel dashboard visually — charts are more persuasive than tables for clients.</p>
+      <p><strong>Key message:</strong> <em>"Your top opportunity for growth in 2023 is expanding your Sets collection, doubling down on Amazon, and targeting women aged 30–49 with campaigns in Bengaluru and Hyderabad."</em></p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ EMAIL TEMPLATES ═══════════════════════════════ -->
+<section id="emails" class="section">
+  <div class="section-label">05 · Email Templates</div>
+  <h2 class="section-title">Ready-to-Send Communication Templates</h2>
+  <p class="section-intro">Use these templates as a starting point — personalise the names, your specific role, and any meeting details.</p>
+
+  <div style="margin-bottom:0.6rem;font-size:0.8rem;font-weight:600;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;">Email 1 · To Your Manager (Project Delivery)</div>
+  <div class="email-box">
+    <div class="email-header">
+      <span>To:</span> [Manager's Name]
+      <span>Subject:</span> Vrinda Store Annual Report 2022 — Analysis Complete
+    </div>
+    <div class="email-body">
+      <p>Hi [Name],</p>
+      <p>I've completed the Vrinda Store 2022 Annual Data Analysis and the full documentation package is ready for review. The analysis covers 31,047 orders across 12 months and 7 sales channels, and includes an interactive Excel dashboard with 7 charts.</p>
+      <p><strong>Key findings at a glance:</strong><br>
+      · Total revenue: ₹2.12 Crore &nbsp;·&nbsp; Best month: March (₹19.3L)<br>
+      · Women drive 64% of revenue &nbsp;·&nbsp; Amazon is #1 channel at 35% share<br>
+      · Sets alone account for ~50% of category revenue<br>
+      · Delivery success rate: 92.3%</p>
+      <p>I've prepared 5 strategic recommendations for the client, and a full documentation package with presentation guidance. I'd welcome a brief review before we present to the client — could we find 15 minutes this week?</p>
+      <p>I've attached the Excel dashboard and the documentation PDF to this email.</p>
+      <p>Best regards,<br>[Your Name]</p>
+    </div>
+  </div>
+
+  <div style="margin-bottom:0.6rem;font-size:0.8rem;font-weight:600;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;">Email 2 · To the Client (Presentation Invite)</div>
+  <div class="email-box">
+    <div class="email-header">
+      <span>To:</span> [Client Name] &nbsp;&nbsp;
+      <span>Subject:</span> Vrinda Store 2022 Report — Ready to Present | [Your Name / Company]
+    </div>
+    <div class="email-body">
+      <p>Dear [Client Name],</p>
+      <p>I'm pleased to share that the Vrinda Store Annual Report 2022 is now complete. We've analysed your full year of sales data and uncovered some valuable insights that I believe will directly inform your 2023 strategy.</p>
+      <p>Highlights include identifying your most valuable customer segment, the channels delivering the best return, your top-performing product categories, and 5 specific opportunities to grow revenue in the coming year.</p>
+      <p>I'd love to walk you through the full findings in a short 30-minute presentation at your convenience. Please let me know a time that works for you this week or next, or feel free to use the booking link below.</p>
+      <p>Looking forward to sharing this with you.</p>
+      <p>Warm regards,<br>[Your Name]<br>[Your Title] · [Your Company]<br>[Phone] · [Email]</p>
+    </div>
+  </div>
+
+  <div style="margin-bottom:0.6rem;font-size:0.8rem;font-weight:600;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;">Email 3 · Post-Presentation Follow-Up</div>
+  <div class="email-box">
+    <div class="email-header">
+      <span>To:</span> [Client Name] &nbsp;&nbsp;
+      <span>Subject:</span> Follow-Up: Vrinda Store Annual Report & Next Steps
+    </div>
+    <div class="email-body">
+      <p>Dear [Client Name],</p>
+      <p>Thank you for your time in today's presentation. It was great to walk through the findings together and hear your thoughts.</p>
+      <p>As discussed, I'm attaching the full documentation package including the Excel dashboard and the written report with all chart explanations and recommendations.</p>
+      <p><strong>Agreed next steps:</strong><br>
+      · [Action 1] — Owner: [Name] — By: [Date]<br>
+      · [Action 2] — Owner: [Name] — By: [Date]<br>
+      · [Action 3] — Owner: [Name] — By: [Date]</p>
+      <p>Please don't hesitate to reach out if you have any questions or would like to explore any of the findings further. I'm happy to do a deeper-dive analysis on any specific area.</p>
+      <p>Best regards,<br>[Your Name]</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
+<section id="faq" class="section">
+  <div class="section-label">06 · FAQ</div>
+  <h2 class="section-title">Anticipated Questions & Model Answers</h2>
+  <p class="section-intro">Prepare for these questions before your presentation. These represent the most likely challenges from a well-engaged manager or client.</p>
+
+  <details>
+    <summary>Why is March the peak month — is it a seasonal trend or a one-off?</summary>
+    <div class="qa-answer">March aligns with the end of winter and the start of the summer/wedding season in India, which typically drives ethnic wear purchases. It also corresponds with end-of-financial-year shopping. To confirm it as a seasonal trend, we would need 2020 and 2021 data to compare. Recommend tracking this in 2023 to validate.</div>
+  </details>
+
+  <details>
+    <summary>Why is there a 4-month sales decline from September to December?</summary>
+    <div class="qa-answer">The Sep–Dec dip may seem counterintuitive given the festive season (Navratri, Dussehra, Diwali, Christmas). Possible explanations: competitor discounting capturing demand, inventory constraints on popular Sets/Kurtas, or underinvestment in festive marketing campaigns. This is a priority investigation area and a clear opportunity for 2023.</div>
+  </details>
+
+  <details>
+    <summary>What is the average order value, and how can we increase it?</summary>
+    <div class="qa-answer">Average order value across all channels is approximately ₹684 (₹2.12 Cr ÷ 31,047 orders). Strategies to increase AOV: introduce bundle deals (e.g., Kurta + Dupatta sets), add recommended pairings at checkout, introduce minimum-spend free shipping thresholds, and upsell premium or embellished versions of top-selling SKUs.</div>
+  </details>
+
+  <details>
+    <summary>Why is the return rate higher than cancellation? What's causing returns?</summary>
+    <div class="qa-answer">Returns (3.4%) exceeding cancellations (2.7%) typically indicates a product-expectation mismatch — customers receive the item and decide it doesn't match the listing (wrong size, colour, or quality). To diagnose: analyse return reasons from channel dashboards (Amazon, Flipkart provide return reason data). Focus on size guide accuracy and product photography quality.</div>
+  </details>
+
+  <details>
+    <summary>Should we drop smaller channels like Meesho or Nalli?</summary>
+    <div class="qa-answer">Not immediately. Nalli serves a distinct saree-buying audience unlikely to shop on Amazon or Myntra — it protects a niche. Meesho targets value-segment buyers in Tier 2/3 cities — a different geography from the Top 5 cities. Both have low seller-management overhead. The recommendation is to maintain but not actively invest until they show growth signals. Ajio, despite lower volume, has a premium audience worth nurturing.</div>
+  </details>
+
+  <details>
+    <summary>How confident are we in this data? Is there any missing or inaccurate data?</summary>
+    <div class="qa-answer">The dataset of 31,047 orders covers a full calendar year and all major channels, which gives us high confidence in the aggregate findings. Age groups are derived from a formula (Teenager &lt;30, Adult 30–49, Senior 50+), which is a reasonable but simplified segmentation. Month labels are formula-derived from order dates. The dataset appears complete with no major gaps observed. Any specific data quality questions should be directed to the source system export.</div>
+  </details>
+
+  <details>
+    <summary>What should our 2023 target revenue be?</summary>
+    <div class="qa-answer">Based on 2022 performance of ₹2.12 Crore, a realistic growth target would be ₹2.5–2.7 Crore (18–27% growth) if the 5 recommendations are actioned: expanded Sets collection, higher Amazon ad investment, focused marketing to Adult Women in Top 5 cities, a dedicated Q4 festive campaign, and reduced returns. A conservative target without new investment would be ₹2.2–2.3 Crore (flat-to-modest organic growth).</div>
+  </details>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Vrinda Store Annual Report 2022</strong> · Full Documentation Package</p>
+  <p style="margin-top:0.4rem;">Prepared as a complete project delivery package · Analysis based on 31,047 transactions across 12 months and 7 sales channels</p>
+  <p style="margin-top:0.8rem;font-size:0.73rem;">This document is confidential and intended solely for the named recipients.</p>
+</footer>
+
+</body>
+</html>

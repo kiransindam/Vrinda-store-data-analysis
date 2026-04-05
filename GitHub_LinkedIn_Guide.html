@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Setup + LinkedIn Post · Vrinda Store Project</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #21262d;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --green: #3fb950;
+    --blue: #58a6ff;
+    --purple: #bc8cff;
+    --gold: #e3b341;
+    --orange: #f0883e;
+    --linkedin: #0a66c2;
+    --linkedin-dark: #004182;
+    --red: #f85149;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 3.5rem 2rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(63,185,80,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 50%, rgba(88,166,255,0.08) 0%, transparent 50%);
+  }
+  .header-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(63,185,80,0.1);
+    border: 1px solid rgba(63,185,80,0.3);
+    color: var(--green);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 20px;
+    margin-bottom: 1.2rem;
+  }
+  header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 0.8rem;
+    background: linear-gradient(135deg, var(--text) 0%, var(--blue) 50%, var(--purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+  }
+  header p {
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 560px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* NAV TABS */
+  .tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    overflow-x: auto;
+    position: sticky; top: 0; z-index: 50;
+  }
+  .tab {
+    padding: 0.9rem 1.5rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.github:hover, .tab.github.active { color: var(--green); border-bottom-color: var(--green); }
+  .tab.linkedin:hover, .tab.linkedin.active { color: #58a6ff; border-bottom-color: #58a6ff; }
+  .tab.files:hover, .tab.files.active { color: var(--purple); border-bottom-color: var(--purple); }
+
+  /* SECTIONS */
+  .section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+  .section + .section { border-top: 1px solid var(--border); }
+
+  .section-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.5rem;
+  }
+  .section-eyebrow.linkedin-color { color: var(--blue); }
+  .section-eyebrow.files-color { color: var(--purple); }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+  }
+  .section-desc { color: var(--muted); margin-bottom: 2rem; font-size: 0.94rem; }
+
+  /* STEP CARDS */
+  .steps { display: flex; flex-direction: column; gap: 0; }
+  .step {
+    display: flex; gap: 1.5rem;
+    position: relative;
+    padding-bottom: 2rem;
+  }
+  .step:last-child { padding-bottom: 0; }
+  .step-left { display: flex; flex-direction: column; align-items: center; }
+  .step-num {
+    width: 40px; height: 40px;
+    background: var(--surface2);
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--green);
+    flex-shrink: 0;
+  }
+  .step-line {
+    flex: 1;
+    width: 2px;
+    background: var(--border);
+    margin-top: 0.5rem;
+    min-height: 30px;
+  }
+  .step:last-child .step-line { display: none; }
+  .step-content { flex: 1; padding-top: 0.4rem; }
+  .step-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+  .step-body { font-size: 0.88rem; color: var(--muted); margin-bottom: 0.8rem; }
+
+  /* CODE BLOCKS */
+  .code-block {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 0.8rem;
+  }
+  .code-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.02);
+  }
+  .code-lang {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .copy-btn {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.2rem 0.6rem;
+    transition: all 0.2s;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .copy-btn:hover { color: var(--green); border-color: var(--green); }
+  .copy-btn.copied { color: var(--green); border-color: var(--green); }
+  pre {
+    padding: 1rem 1.2rem;
+    overflow-x: auto;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .c-green { color: var(--green); }
+  .c-blue { color: var(--blue); }
+  .c-gold { color: var(--gold); }
+  .c-muted { color: var(--muted); }
+  .c-orange { color: var(--orange); }
+  .c-purple { color: var(--purple); }
+
+  /* INFO BOXES */
+  .info-box {
+    background: rgba(88,166,255,0.07);
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    font-size: 0.86rem;
+    color: #79c0ff;
+    margin-bottom: 1rem;
+    display: flex; gap: 0.6rem;
+  }
+  .tip-box {
+    background: rgba(63,185,80,0.07);
+    border: 1px solid rgba(63,185,80,0.25);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    font-size: 0.86rem;
+    color: #7ee787;
+    margin-bottom: 1rem;
+    display: flex; gap: 0.6rem;
+  }
+  .warn-box {
+    background: rgba(227,179,65,0.07);
+    border: 1px solid rgba(227,179,65,0.25);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    font-size: 0.86rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex; gap: 0.6rem;
+  }
+
+  /* FILE TREE */
+  .file-tree {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.82rem;
+    line-height: 2;
+    margin-bottom: 1rem;
+  }
+  .ft-dir { color: var(--blue); }
+  .ft-file { color: var(--text); }
+  .ft-comment { color: var(--muted); }
+
+  /* LINKEDIN POST */
+  .linkedin-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.15), 0 4px 24px rgba(0,0,0,0.3);
+    margin-bottom: 1.5rem;
+  }
+  .li-header {
+    display: flex; align-items: center; gap: 0.8rem;
+    padding: 1rem 1.2rem 0.6rem;
+  }
+  .li-avatar {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0a66c2, #004182);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .li-name { font-weight: 700; font-size: 0.92rem; color: #1a1a1a; }
+  .li-title { font-size: 0.77rem; color: #555; }
+  .li-time { font-size: 0.73rem; color: #888; margin-top: 0.1rem; }
+  .li-body {
+    padding: 0.4rem 1.2rem 1rem;
+    font-size: 0.88rem;
+    color: #1a1a1a;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .li-body .hashtag { color: var(--linkedin); font-weight: 500; }
+  .li-img {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(135deg, #0a66c2 0%, #004182 50%, #000 100%);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 0.5rem;
+  }
+  .li-img-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: white;
+  }
+  .li-img-sub { color: rgba(255,255,255,0.6); font-size: 0.82rem; }
+  .li-actions {
+    display: flex; gap: 0;
+    padding: 0.5rem 0.8rem;
+    border-top: 1px solid #e0e0e0;
+  }
+  .li-action {
+    flex: 1;
+    display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+    font-size: 0.78rem;
+    color: #555;
+    font-weight: 600;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .li-action:hover { background: #f3f2ef; }
+
+  /* POST COPY BOX */
+  .post-copy-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .pcb-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.7rem 1.2rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(10,102,194,0.1);
+  }
+  .pcb-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue);
+  }
+  .pcb-body {
+    padding: 1.2rem;
+    font-size: 0.87rem;
+    color: var(--text);
+    line-height: 1.75;
+    white-space: pre-wrap;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* CHECKLIST */
+  .checklist { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .check-item {
+    display: flex; align-items: flex-start; gap: 0.7rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.7rem 1rem;
+    font-size: 0.86rem;
+  }
+  .check-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .check-text { color: var(--text); }
+  .check-text small { display: block; color: var(--muted); font-size: 0.78rem; margin-top: 0.1rem; }
+
+  /* TAG CLOUD */
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+  .tag {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .tag:hover { border-color: var(--blue); color: var(--blue); }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-badge">🚀 Complete Setup Guide</div>
+  <h1>GitHub Repo + LinkedIn Post</h1>
+  <p>Everything you need to publish your Vrinda Store project professionally — from repo setup to a post that gets noticed.</p>
+</header>
+
+<div class="tabs">
+  <a class="tab github active" href="#github">⬡ GitHub Setup</a>
+  <a class="tab linkedin" href="#linkedin">💼 LinkedIn Post</a>
+  <a class="tab files" href="#files">📁 File Guide</a>
+</div>
+
+
+<!-- ══════════════════ GITHUB SECTION ══════════════════ -->
+<section id="github" class="section">
+  <div class="section-eyebrow">Part 01 · GitHub</div>
+  <h2 class="section-title">Create & Upload Your Repository</h2>
+  <p class="section-desc">Follow these steps exactly, A to Z, to get a professional GitHub repo live in under 15 minutes.</p>
+
+  <div class="steps">
+
+    <!-- STEP 1 -->
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num">01</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Create a New GitHub Account (or Log In)</div>
+        <div class="step-body">Go to <strong>github.com</strong> → click <strong>Sign Up</strong> if you don't have an account. Use a professional email. Your GitHub username will appear on your profile — choose something like <code>yourname-data</code> or just your real name.</div>
+        <div class="tip-box">💡 Use the same name across GitHub, LinkedIn, and your portfolio for maximum discoverability.</div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num">02</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Create a New Repository</div>
+        <div class="step-body">Click the <strong>+</strong> icon → <strong>New repository</strong>. Fill in the fields exactly as shown below:</div>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Repository Settings</span></div>
+          <pre><span class="c-gold">Repository name:</span>   <span class="c-green">vrinda-store-data-analysis</span>
+<span class="c-gold">Description:</span>       <span class="c-blue">📊 Annual sales analysis of Vrinda Store (2022) — Excel dashboard, 7 charts, business insights & recommendations</span>
+<span class="c-gold">Visibility:</span>        <span class="c-green">✅ Public</span>  <span class="c-muted">(so recruiters & clients can see it)</span>
+<span class="c-gold">Initialize with:</span>   <span class="c-green">✅ Add a README file</span>  <span class="c-muted">(tick this)</span>
+<span class="c-gold">Add .gitignore:</span>    <span class="c-muted">None (skip)</span>
+<span class="c-gold">License:</span>           <span class="c-muted">None (skip for now)</span></pre>
+        </div>
+        <p style="font-size:0.86rem;color:var(--muted)">Click <strong style="color:var(--green)">Create repository</strong>.</p>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num">03</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Replace the README with the Professional One</div>
+        <div class="step-body">In your new repo, click <strong>README.md</strong> → click the <strong>✏️ pencil edit icon</strong>. Select all existing text and delete it. Paste in the full content from the <code>README.md</code> file provided in this package. Then scroll down → click <strong>Commit changes</strong>.</div>
+        <div class="info-box">ℹ️ The README.md from your documentation package has full badges, tables, emoji structure, and professional formatting already built in.</div>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num">04</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Upload All Project Files</div>
+        <div class="step-body">In your repo, click <strong>Add file → Upload files</strong>. Drag and drop all files in this order:</div>
+        <div class="file-tree">
+<span class="ft-dir">📁 Root level:</span>
+  <span class="ft-file">  ├── Vrinda_Store_Data_Analysis.xlsx</span>  <span class="ft-comment">← drag the Excel file here</span>
+<span class="ft-dir">📁 Create folder "docs":</span>
+  <span class="ft-file">  ├── Vrinda_Store_Documentation_Package.html</span>
+  <span class="ft-file">  ├── Presentation_Guide.md</span>
+  <span class="ft-file">  └── Stakeholder_Comms_Guide.md</span>
+<span class="ft-dir">📁 Create folder "data":</span>
+  <span class="ft-file">  └── data_dictionary.md</span></div>
+        <div class="warn-box">⚠️ To create a folder while uploading: type the folder name + "/" before the filename in the path field. Example: <code>docs/Presentation_Guide.md</code></div>
+        <p style="font-size:0.86rem;color:var(--muted)">After uploading each batch, add a commit message like <code>Add project documentation</code> and click <strong>Commit changes</strong>.</p>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num">05</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Add Repository Topics (Tags)</div>
+        <div class="step-body">On your repo homepage, click the ⚙️ gear icon next to <strong>About</strong>. Add these topics — they help people discover your project via GitHub search:</div>
+        <div class="tags">
+          <span class="tag">data-analysis</span>
+          <span class="tag">excel</span>
+          <span class="tag">dashboard</span>
+          <span class="tag">pivot-tables</span>
+          <span class="tag">business-intelligence</span>
+          <span class="tag">ecommerce-analytics</span>
+          <span class="tag">sales-analysis</span>
+          <span class="tag">data-visualization</span>
+          <span class="tag">india</span>
+          <span class="tag">portfolio-project</span>
+        </div>
+        <br>
+        <p style="font-size:0.86rem;color:var(--muted)">Also add your website URL if you have one. Click <strong>Save changes</strong>.</p>
+      </div>
+    </div>
+
+    <!-- STEP 6 -->
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num">06</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Pin the Repository to Your Profile</div>
+        <div class="step-body">Go to your <strong>GitHub profile</strong> → click <strong>Customize your pins</strong> → select <code>vrinda-store-data-analysis</code>. This makes it the first thing anyone sees when they visit your profile.</div>
+        <div class="tip-box">💡 A pinned repo on GitHub is equivalent to a featured project on a resume. Always pin your 3–6 best projects.</div>
+      </div>
+    </div>
+
+    <!-- STEP 7 -->
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num">07</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Update Your Profile README (Optional but Powerful)</div>
+        <div class="step-body">Create a special repo named exactly the same as your GitHub username. The README in that repo becomes your GitHub profile page. Add a brief intro, your skills, and link to this project.</div>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">GitHub Profile README snippet</span></div>
+          <pre><span class="c-blue">## 👋 Hi, I'm [Your Name]</span>
+
+<span class="c-green">Data Analyst</span> | Excel · SQL · Python · Power BI
+
+<span class="c-gold">🔭 Latest Project:</span> <span class="c-blue">[Vrinda Store Annual Sales Analysis 2022]</span>
+<span class="c-muted">   → 31K+ orders · 7-chart Excel dashboard · ₹2.12 Cr revenue analysed</span>
+
+<span class="c-gold">📊 Skills:</span> Data Cleaning · Pivot Tables · Dashboard Design · BI Reporting</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 8 -->
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num">08</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Copy Your Repo URL</div>
+        <div class="step-body">Your repo will be live at:</div>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Your Live Repo URL</span></div>
+          <pre><span class="c-green">https://github.com/</span><span class="c-gold">YOUR-USERNAME</span><span class="c-green">/vrinda-store-data-analysis</span></pre>
+        </div>
+        <div class="tip-box">✅ You're live! Copy this URL — you'll need it for your LinkedIn post.</div>
+      </div>
+    </div>
+
+  </div><!-- end steps -->
+</section>
+
+
+<!-- ══════════════════ LINKEDIN SECTION ══════════════════ -->
+<section id="linkedin" class="section">
+  <div class="section-eyebrow linkedin-color">Part 02 · LinkedIn</div>
+  <h2 class="section-title">Write a Post That Gets Noticed</h2>
+  <p class="section-desc">A data analyst post that's got strong hooks, concrete numbers, storytelling, and the right hashtags to hit the LinkedIn algorithm and land in front of recruiters and peers.</p>
+
+  <!-- PREVIEW -->
+  <div style="margin-bottom:0.6rem;font-size:0.8rem;font-weight:600;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;">LinkedIn Post Preview</div>
+  <div class="linkedin-card">
+    <div class="li-header">
+      <div class="li-avatar">👤</div>
+      <div>
+        <div class="li-name">[Your Name]</div>
+        <div class="li-title">Data Analyst | Excel · SQL · Power BI · Python</div>
+        <div class="li-time">Just now · 🌐</div>
+      </div>
+    </div>
+    <div class="li-img">
+      <div class="li-img-title">🛍️ Vrinda Store · 2022</div>
+      <div class="li-img-sub">Annual Sales Analysis · Excel Dashboard · 31,047 Orders</div>
+    </div>
+    <div class="li-body">🛍️ I just completed an end-to-end sales analysis for Vrinda Store — and the numbers tell a fascinating story.
+
+Here's what I found inside 31,047 orders and ₹2.12 Crore in annual revenue 👇
+
+<strong>📊 The 5 insights that stood out:</strong>
+
+<strong>1️⃣ One product category = 50% of revenue</strong>
+Sets (coordinated outfit collections) generated ₹1.05 Crore on their own.
+Everything else is secondary.
+
+<strong>2️⃣ Your customer has a very clear face</strong>
+Women aged 30–49 placed 10,740 orders — more than double any other segment.
+If you're not targeting this group specifically, you're leaving money on the table.
+
+<strong>3️⃣ Amazon dominates, but the story is nuanced</strong>
+Amazon = 35% of revenue (₹75.2 Lakhs). But Ajio has a premium buyer profile with high order values — worth a separate strategy entirely.
+
+<strong>4️⃣ March peaks. September dips. Nobody planned for it.</strong>
+There's a 4-month declining trend from September to December — right through the festive season. A targeted Diwali & Navratri campaign could recover ₹5–10 Lakhs.
+
+<strong>5️⃣ 2,406 orders were cancelled, returned, or refunded</strong>
+That's ~₹12–14 Lakhs in recoverable revenue. The fix? Better size guides and order confirmation nudges.
+
+<strong>🔧 What I built:</strong>
+→ Cleaned raw dataset of 31,047 rows
+→ 7 pivot tables → 7 interactive charts
+→ Excel dashboard with dynamic slicers
+→ Full documentation + stakeholder presentation guide
+
+<strong>📈 The takeaway:</strong>
+Data analysis isn't about charts. It's about answering one question:
+<em>"Where is the next ₹50 Lakhs hiding?"</em>
+In this case — I found it.
+
+🔗 Full project on GitHub: [your-github-link]
+
+Drop a 💬 if you're working on something similar — I'd love to connect.
+
+<span class="hashtag">#DataAnalysis</span> <span class="hashtag">#Excel</span> <span class="hashtag">#DataAnalytics</span> <span class="hashtag">#BusinessIntelligence</span> <span class="hashtag">#EcommerceAnalytics</span> <span class="hashtag">#DataVisualization</span> <span class="hashtag">#PortfolioProject</span> <span class="hashtag">#Analytics</span> <span class="hashtag">#DataDriven</span> <span class="hashtag">#SQL</span></div>
+    <div class="li-actions">
+      <div class="li-action">👍 Like</div>
+      <div class="li-action">💬 Comment</div>
+      <div class="li-action">🔁 Repost</div>
+      <div class="li-action">📤 Send</div>
+    </div>
+  </div>
+
+  <!-- COPYABLE TEXT -->
+  <div style="margin-bottom:0.6rem;font-size:0.8rem;font-weight:600;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;">Copy-Paste Ready Version</div>
+  <div class="post-copy-box">
+    <div class="pcb-header">
+      <span class="pcb-label">LinkedIn Post · Full Text</span>
+      <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+    </div>
+    <div class="pcb-body" id="post-text">🛍️ I just completed an end-to-end sales analysis for Vrinda Store — and the numbers tell a fascinating story.
+
+Here's what I found inside 31,047 orders and ₹2.12 Crore in annual revenue 👇
+
+📊 The 5 insights that stood out:
+
+1️⃣ One product category = 50% of revenue
+Sets (coordinated outfit collections) generated ₹1.05 Crore on their own.
+Everything else is secondary.
+
+2️⃣ Your customer has a very clear face
+Women aged 30–49 placed 10,740 orders — more than double any other segment.
+If you're not targeting this group specifically, you're leaving money on the table.
+
+3️⃣ Amazon dominates, but the story is nuanced
+Amazon = 35% of revenue (₹75.2 Lakhs). But Ajio has a premium buyer profile with high order values — worth a separate strategy entirely.
+
+4️⃣ March peaks. September dips. Nobody planned for it.
+There's a 4-month declining trend from September to December — right through the festive season. A targeted Diwali & Navratri campaign could recover ₹5–10 Lakhs.
+
+5️⃣ 2,406 orders were cancelled, returned, or refunded
+That's ~₹12–14 Lakhs in recoverable revenue. The fix? Better size guides and order confirmation nudges.
+
+🔧 What I built:
+→ Cleaned raw dataset of 31,047 rows
+→ 7 pivot tables → 7 interactive charts
+→ Excel dashboard with dynamic slicers
+→ Full documentation + stakeholder presentation guide
+
+📈 The takeaway:
+Data analysis isn't about charts. It's about answering one question:
+"Where is the next ₹50 Lakhs hiding?"
+In this case — I found it.
+
+🔗 Full project on GitHub: [PASTE YOUR GITHUB LINK HERE]
+
+Drop a 💬 if you're working on something similar — I'd love to connect.
+
+#DataAnalysis #Excel #DataAnalytics #BusinessIntelligence #EcommerceAnalytics #DataVisualization #PortfolioProject #Analytics #DataDriven #SQL</div>
+  </div>
+
+  <!-- POST STRATEGY -->
+  <div style="margin-bottom:1rem;font-size:0.9rem;font-weight:700;color:var(--text);">📋 Post Strategy — What Makes This Work</div>
+  <div class="checklist">
+    <div class="check-item">
+      <div class="check-icon">🪝</div>
+      <div class="check-text"><strong>Hook in line 1</strong> — "the numbers tell a fascinating story" creates curiosity without revealing everything. LinkedIn's algorithm hides everything after line 3 — the hook must make people click "see more".
+      <small>Never start with "I'm excited to share..." — everyone does that. Start with a statement that creates a question in the reader's mind.</small></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">🔢</div>
+      <div class="check-text"><strong>Specific numbers everywhere</strong> — ₹2.12 Crore, 31,047 orders, 10,740 orders, ₹75.2 Lakhs. Vague posts get ignored. Specific numbers get saved and reshared.
+      <small>LinkedIn data: posts with specific numbers get 3x more comments than vague ones.</small></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">📜</div>
+      <div class="check-text"><strong>List format with emoji numbers</strong> — 1️⃣ through 5️⃣ makes the post scannable. Most people read the numbers first, then decide if they want the full context.
+      <small>Scannable = shareable. Dense paragraphs = ignored.</small></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">🎯</div>
+      <div class="check-text"><strong>Business framing, not technical framing</strong> — "₹12–14 Lakhs in recoverable revenue" not "return rate was 3.4%". Recruiters and clients think in business outcomes.
+      <small>This framing also attracts business owners who might hire you.</small></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">🔗</div>
+      <div class="check-text"><strong>GitHub link near the end</strong> — not at the top. LinkedIn's algorithm suppresses posts with external links at the top. Put the link after all the value, not before.
+      <small>Pro tip: some creators put the link in the first comment instead of the post itself — the algorithm ranks that even better.</small></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">#️⃣</div>
+      <div class="check-text"><strong>10 targeted hashtags</strong> — mix of high-volume (#DataAnalysis, #Excel) and niche (#EcommerceAnalytics, #PortfolioProject). Don't use 30 hashtags — it looks spammy.
+      <small>LinkedIn recommends 3–5 hashtags. 8–10 works better in practice for discovery.</small></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">💬</div>
+      <div class="check-text"><strong>End with an engagement question</strong> — "Drop a 💬 if you're working on something similar" invites comments. Comments = algorithm boost = more impressions.
+      <small>Posts with questions in the last line get ~40% more comments on average.</small></div>
+    </div>
+  </div>
+
+  <!-- TIMING -->
+  <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:1.2rem 1.4rem;margin-bottom:1rem;">
+    <div style="font-size:0.8rem;font-weight:700;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.8rem;">⏰ Best Times to Post</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;font-size:0.84rem;">
+      <div style="text-align:center;padding:0.7rem;background:rgba(63,185,80,0.1);border:1px solid rgba(63,185,80,0.2);border-radius:6px;">
+        <div style="font-weight:700;color:var(--green);">Tuesday</div>
+        <div style="color:var(--muted);">8–10 AM IST</div>
+        <div style="font-size:0.72rem;color:var(--green);">🔥 Best</div>
+      </div>
+      <div style="text-align:center;padding:0.7rem;background:rgba(63,185,80,0.08);border:1px solid rgba(63,185,80,0.15);border-radius:6px;">
+        <div style="font-weight:700;color:var(--green);">Wednesday</div>
+        <div style="color:var(--muted);">12–2 PM IST</div>
+        <div style="font-size:0.72rem;color:var(--green);">✅ Great</div>
+      </div>
+      <div style="text-align:center;padding:0.7rem;background:rgba(63,185,80,0.05);border:1px solid rgba(63,185,80,0.1);border-radius:6px;">
+        <div style="font-weight:700;color:var(--text);">Thursday</div>
+        <div style="color:var(--muted);">5–7 PM IST</div>
+        <div style="font-size:0.72rem;color:var(--muted);">👍 Good</div>
+      </div>
+    </div>
+    <div style="margin-top:0.8rem;font-size:0.8rem;color:var(--muted);">Avoid weekends and Monday mornings. The first 60 minutes after posting are critical — respond to every comment quickly to signal engagement to the algorithm.</div>
+  </div>
+
+</section>
+
+
+<!-- ══════════════════ FILES SECTION ══════════════════ -->
+<section id="files" class="section">
+  <div class="section-eyebrow files-color">Part 03 · Files</div>
+  <h2 class="section-title">Your Complete File Package</h2>
+  <p class="section-desc">All files included in this documentation package and what each one is for.</p>
+
+  <div class="checklist">
+    <div class="check-item">
+      <div class="check-icon">📊</div>
+      <div class="check-text"><strong>Vrinda_Store_Data_Analysis.xlsx</strong> — The original Excel file with raw data + pivot tables + interactive dashboard. This is the primary deliverable.
+      <small>Upload this directly to GitHub. Also share with your manager and client.</small></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">📄</div>
+      <div class="check-text"><strong>Vrinda_Store_Documentation_Package.html</strong> — The full HTML document you're reading now — all 6 sections of stakeholder documentation. Opens in any browser.
+      <small>Save to docs/ folder in GitHub. Also share as a standalone file via email.</small></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">📋</div>
+      <div class="check-text"><strong>README.md</strong> — The professional GitHub repository description with badges, tables, insights, and recommendations.
+      <small>Paste this into your GitHub repo's README editor.</small></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">🎤</div>
+      <div class="check-text"><strong>docs/Presentation_Guide.md</strong> — Step-by-step 30-minute presentation script with talking points for each chart.
+      <small>Upload to docs/ folder. Use personally as your presentation prep sheet.</small></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">🤝</div>
+      <div class="check-text"><strong>docs/Stakeholder_Comms_Guide.md</strong> — Tailored communication advice for manager vs. client audiences.
+      <small>Upload to docs/ folder. Reference before any stakeholder meeting.</small></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">📖</div>
+      <div class="check-text"><strong>data/data_dictionary.md</strong> — Definitions of all 21 data columns, derived sheet logic, and data quality notes.
+      <small>Upload to data/ folder. Demonstrates data literacy to technical reviewers.</small></div>
+    </div>
+  </div>
+
+  <div class="tip-box">💡 <strong>Pro tip:</strong> Once your GitHub repo is live, add the URL to: your LinkedIn profile (Featured section), your resume (Projects section), and your email signature. Three touchpoints = maximum visibility.</div>
+</section>
+
+<footer>
+  Built for Vrinda Store Annual Report 2022 · Full Project Documentation Package
+</footer>
+
+<script>
+  function copyPost(btn) {
+    const text = document.getElementById('post-text').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = '✓ Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Copy Post';
+        btn.classList.remove('copied');
+      }, 2500);
+    });
+  }
+
+  // Smooth tab highlight on scroll
+  const tabs = document.querySelectorAll('.tab');
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    tabs.forEach(t => {
+      t.classList.remove('active');
+      if (t.getAttribute('href') === '#' + current) t.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
