@@ -190,9 +190,12 @@ Data Analyst | Excel · Python · Power BI
 
 ---
 
-link :
+### link- 1 :
 
 [GitHub_LinkedIn_Guide.html](https://github.com/user-attachments/files/26490150/GitHub_LinkedIn_Guide.html)
+
+### link- 2 :
+
 [Vrinda_Store_Documentation_Package.html](https://github.com/user-attachments/files/26490209/Vrinda_Store_Documentation_Package.html)
 
 ## 📄 License
