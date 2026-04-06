@@ -200,6 +200,9 @@ Data Analyst | Excel · Python · Power BI
 
 [Vrinda_Store_Documentation_Package.html](https://github.com/user-attachments/files/26490209/Vrinda_Store_Documentation_Package.html)
 
+#Documentation 
+[Vrinda_Store_Full_Documentation_Kiran_Sindam.pdf](https://github.com/user-attachments/files/26510623/Vrinda_Store_Full_Documentation_Kiran_Sindam.pdf)
+
 ## 📄 License
 
 This project is available for educational and portfolio purposes.
