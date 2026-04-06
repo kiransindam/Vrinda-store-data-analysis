@@ -9,7 +9,7 @@
 
 **End-to-end sales analysis of an Indian fashion e-commerce store across 7 platforms and 31,000+ orders**
 
-[📊 View Dashboard](#dashboard-preview<img width="1202" height="597" alt="dashborad" src="https://github.com/user-attachments/assets/0eec99cd-7c6a-4a6b-98ef-855b8ebbe283" />
+[📊 View Dashboard](<img width="1202" height="597" alt="dashborad" src="https://github.com/user-attachments/assets/0eec99cd-7c6a-4a6b-98ef-855b8ebbe283" />
 ) · [📋 Key Insights](#key-insights) · [🚀 Recommendations](#strategic-recommendations) · [📁 File Structure](#file-structure)
 
 </div>
